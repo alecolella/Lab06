@@ -80,13 +80,13 @@ public class Model {
 		}
 		
 		//condizione di terminazione
-		if(giorniTotali > Model.NUMERO_GIORNI_TOTALI) {
+		if(step > Model.NUMERO_GIORNI_TOTALI) {
 			
 			return;
 		}
 		
 		//se parziale ha 15 giorni
-		if(giorniTotali == Model.NUMERO_GIORNI_TOTALI) {
+		if(step == Model.NUMERO_GIORNI_TOTALI) {
 			
 			//System.out.println("giorniTot = numero totali");
 			boolean visitate = true;
@@ -122,14 +122,14 @@ public class Model {
 			parziale.add(sc);
 				
 				
-				sc.increaseCounter();
+				
 				//giorniTotali++;
 				
 				if(this.controllaParziale(parziale)) {
 				recursive(step+1,parziale,mese);
 				}
 				parziale.remove(sc);
-				sc.descreaseCounter();
+				//sc.descreaseCounter();
 				//giorniTotali--;
 				
 				}
@@ -160,13 +160,18 @@ public class Model {
 	private boolean controllaParziale(List<SimpleCity> parziale) {
 
 		//Controllo che non trascorra in tutto più di max giorni in una città
+		for(int i = 0 ; i<parziale.size();i++) {
+			parziale.get(i).increaseCounter();
+			//System.out.println(parziale.get(i).getCounter());
+		}
+		
 		for(SimpleCity sc : citta) {
 			if(sc.getCounter()>NUMERO_GIORNI_CITTA_MAX)
 				return false;
 		
 		}
 		//Deve sostare 3 giorni
-		for(int i = 0; i<parziale.size()-2 && i>=3; i++) {
+		for(int i = 0; parziale.size() >=3 && i<parziale.size()-2; i++) {
 			if(!(parziale.get(i).getNome().equals(parziale.get(i+1).getNome()) && parziale.get(i).getNome().equals(parziale.get(i+2).getNome())))
 			
 					//if(!((sc.getNome().equals(parziale.get(i+1).getNome())) && sc.getNome().equals(parziale.get(i+2).getNome()))){
