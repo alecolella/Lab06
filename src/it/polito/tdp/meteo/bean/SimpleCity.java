@@ -1,9 +1,13 @@
 package it.polito.tdp.meteo.bean;
 
+import java.util.List;
+
 public class SimpleCity {
 
 	private String nome;
 	private int costo;
+	private int counter = 0;
+	private List<Rilevamento> rilevamenti;
 	
 	public SimpleCity(String nome) {
 		this.nome = nome;
@@ -22,12 +26,16 @@ public class SimpleCity {
 		this.nome = nome;
 	}
 	
-	public int getCosto() {
-		return costo;
+	public int getCosto(int step) {
+		return rilevamenti.get(step).getUmidita();
 	}
 
 	public void setCosto(int costo) {
 		this.costo = costo;
+	}
+	
+	public void setRilevamenti(List<Rilevamento> rilevamenti) {
+		this.rilevamenti = rilevamenti;
 	}
 
 	@Override
@@ -58,6 +66,18 @@ public class SimpleCity {
 	@Override
 	public String toString() {
 		return nome;
+	}
+	public int getCounter() {
+		return counter;
+	}
+
+	public void increaseCounter() {
+		this.counter += 1;
+	}
+
+	public void descreaseCounter() {
+		this.counter -= 1;
+		
 	}
 	
 }

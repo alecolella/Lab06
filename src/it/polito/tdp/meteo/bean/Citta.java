@@ -7,6 +7,8 @@ public class Citta {
 	private String nome;
 	private List<Rilevamento> rilevamenti;
 	private int counter = 0;
+	private double umiditaMedia = 0;
+	private int costo = 0;
 	
 	public Citta(String nome) {
 		this.nome = nome;
@@ -73,6 +75,22 @@ public class Citta {
 	@Override
 	public String toString() {
 		return nome;
+	}
+
+	public double getUmiditaMedia() {
+		return umiditaMedia;
+	}
+
+	public void setUmiditaMedia(double umiditaMedia) {
+		this.umiditaMedia = umiditaMedia;
+	}
+	
+	public int getCosto(int step) {
+		return rilevamenti.get(step).getUmidita();
+	}
+
+	public void setCosto(int costo) {
+		this.costo = costo;
 	}
 	
 }
