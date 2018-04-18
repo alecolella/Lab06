@@ -37,7 +37,7 @@ public class MeteoController {
 		String sequenza; 
 		Integer mese = boxMese.getValue();;
 		if(mese==null) {
-			txtResult.appendText("Nessun mese selezionato!");
+			txtResult.appendText("Nessun mese selezionato!\n");
 		    return;
 		   
 		}
@@ -56,7 +56,7 @@ public class MeteoController {
 		String umiditaMedia;
 		Integer mese = boxMese.getValue();;
 		if(mese==null) {
-			txtResult.appendText("Nessun mese selezionato!");
+			txtResult.appendText("Nessun mese selezionato!\n");
 		    return;
 		   
 		}
